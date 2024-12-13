@@ -20,7 +20,7 @@ const NavForMobile = ({ setOpen, open }) => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full sm:w-4/5 md:w-3/5 z-50  h-screen bg-red-400 transform duration-500 ease-in-out transition-all ${
+      className={`fixed top-0 left-0 w-full sm:w-4/5 md:w-3/5 z-50  h-screen bg-red-400 transform duration-700 ease-in-out transition-all ${
         open ? "translate-x-0" : "-translate-x-full"
       }`}
     >
