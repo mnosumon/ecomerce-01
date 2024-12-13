@@ -7,16 +7,16 @@ import { menuItems } from "../../../dummyData/Index";
 import { IoCloseOutline } from "react-icons/io5";
 import { BsCart3 } from "react-icons/bs";
 import Products from "../../../../app/products/page";
+import ByBenefit from "../../../../components/products/byBenefit/Index";
 
 const NavForMobile = ({ setOpen, open }) => {
   const [productOpen, setProductOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
   const cartRef = useRef();
-  console.log(productOpen);
 
   const handleMenuClick = (menu) => {
     setActiveMenu((prevMenu) => (prevMenu === menu ? null : menu));
-    setProductOpen(menu === "products");
+    setProductOpen(true);
   };
 
   return (
@@ -82,7 +82,7 @@ const NavForMobile = ({ setOpen, open }) => {
           </div>
           <div className="px-4">
             {activeMenu === "products" && <Products />}
-            {activeMenu === "findVitamins" && <h1>Find vitamins for me</h1>}
+            {activeMenu === "findVitamins" && <ByBenefit />}
             {activeMenu === "tipsResources" && <h1>Tips & Resources</h1>}
             {activeMenu === "about" && <h1>About</h1>}
           </div>
