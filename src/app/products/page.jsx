@@ -1,7 +1,12 @@
+import AtoZ from "../../components/products/aTOz/Index";
 import React from "react";
 
-const page = () => {
-  return <div>page</div>;
+const Products = () => {
+  return (
+    <div>
+      <AtoZ />
+    </div>
+  );
 };
 
-export default page;
+export default Products;
