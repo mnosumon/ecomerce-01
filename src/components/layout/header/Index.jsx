@@ -3,20 +3,20 @@ import React, { useEffect, useRef, useState } from "react";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoSearchOutline } from "react-icons/io5";
 import { BsCart3 } from "react-icons/bs";
-
+import { HiOutlineBars3CenterLeft } from "react-icons/hi2";
 import Image from "next/image";
 import Link from "next/link";
+// import SearchCard from "../utilities/SearchCard";
 import { RxCross1 } from "react-icons/rx";
 // import YourCart from "./yourCart/YourCart";
 // import NavbarToggle from "./../navbar/NavbarToggle";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { FaBars, FaTimes } from "react-icons/fa";
-import SearchCard from "../../utilities/SearchCard";
 import NavForMobile from "../navbar/navForMobile/NavForMobile";
 
 const Header = () => {
   const [searchCardShow, setSearchCardShow] = useState(false);
-  //   const [yourCart, setYourCart] = useState(false);
+  const [yourCart, setYourCart] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -44,7 +44,7 @@ const Header = () => {
         !cartBodyRef.current.contains(event.target) &&
         !cartRef.current.contains(event.target)
       ) {
-        // setYourCart(false); // Close the cart when clicked outside
+        setYourCart(false); // Close the cart when clicked outside
         console.log(event.target);
       }
     };
@@ -60,12 +60,28 @@ const Header = () => {
     <header className="border-b border-[#4b4d4e]">
       <div className="w-full lg:container relative mx-auto py-3">
         <div className="flex justify-between items-center px-4">
-          <div className="w-full lg:hidden">
-            <span onClick={() => setOpen(!open)}>
-              <FaBars />
+          <div className="lg:hidden">
+            <span
+              className="text-3xl cursor-pointer"
+              onClick={() => setOpen(!open)}
+            >
+              <HiOutlineBars3CenterLeft />
             </span>
-            {open && <NavForMobile setOpen={setOpen} />}
+            <NavForMobile setOpen={setOpen} open={open} />
           </div>
+          {/* <button
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen(!open)}
+            className="text-2xl lg:hidden z-50 transition-all duration-500 ease-in-out"
+          >
+            <div
+              className={`transform ${
+                open ? "rotate-180 opacity-100" : "rotate-0 opacity-60"
+              } transition-all duration-500 ease-in-out`}
+            >
+              {open ? <FaTimes /> : <FaBars />}
+            </div>
+          </button> */}
           <div className="flex gap-[190px] xl:gap-[300px] items-center">
             <Link href="#" className="overflow-hidden">
               <Image
@@ -76,7 +92,7 @@ const Header = () => {
                 className="object-cover"
               />
             </Link>
-            <div className="gap-5 items-center text-[#4b4d4e] font-montserrat text-xl  flex">
+            <div className="gap-5 items-center text-[#4b4d4e] font-montserrat text-xl hidden lg:flex">
               <Link
                 href="#"
                 className="hover:text-[#000] transform transition-all ease-in-out duration-300"
@@ -89,20 +105,22 @@ const Header = () => {
               >
                 SIGN IN
               </Link>
-              <Link href="#" className="text-2xl cursor-pointer">
-                <IoIosHeartEmpty />
-              </Link>
             </div>
           </div>
 
-          <Link
-            href="#"
-            ref={cartRef}
-            //   onClick={() => setYourCart(!yourCart)}
-            className="text-2xl text-[#4b4d4e] cursor-pointer"
-          >
-            <BsCart3 />
-          </Link>
+          <div className="flex gap-5 items-center">
+            <Link href="#" className="text-2xl cursor-pointer">
+              <IoIosHeartEmpty />
+            </Link>
+            <Link
+              href="#"
+              ref={cartRef}
+              onClick={() => setYourCart(!yourCart)}
+              className="text-2xl text-[#4b4d4e] cursor-pointer"
+            >
+              <BsCart3 />
+            </Link>
+          </div>
         </div>
 
         <div className="w-full relative lg:w-[300px] lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:right-[9%] mt-2 lg:mt-0 px-4">
@@ -128,7 +146,7 @@ const Header = () => {
               <IoSearchOutline />
             </div>
           </div>
-          {searchCardShow && (
+          {/* {searchCardShow && (
             <div
               ref={cardRef}
               className="absolute top-full right-0 z-10 bg-white w-full"
@@ -139,18 +157,10 @@ const Header = () => {
                 setSearchCardShow={setSearchCardShow}
               />
             </div>
-          )}
+          )} */}
         </div>
-        {/* Mobile mobile view mobile view */}
-        {/* <div
-          className={`absolute lg:hidden top-0 w-4/5 h-screen bg-blue-400 transition-transform duration-500 transform ${
-            open ? "translate-x-0" : "-translate-x-full"
-          }`}
-        >
-          <NavbarToggle />
-        </div> */}
-        {/* 
-        {yourCart && (
+
+        {/* {yourCart && (
           <div
             ref={cartBodyRef}
             className="absolute top-[130%] right-0 z-20 w-2/5"

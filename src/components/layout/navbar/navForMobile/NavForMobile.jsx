@@ -7,10 +7,10 @@ import NavbarLink from "../../../utilities/NavbarLink";
 // import Products from "../products/Index";
 import Link from "next/link";
 import { menuItems } from "../../../dummyData/Index";
-import { FaTimes } from "react-icons/fa";
+import { IoCloseOutline } from "react-icons/io5";
 import { BsCart3 } from "react-icons/bs";
 
-const NavForMobile = ({ setOpen }) => {
+const NavForMobile = ({ setOpen, open }) => {
   const [activeMenu, setActiveMenu] = useState(null);
   const cartRef = useRef();
 
@@ -19,14 +19,21 @@ const NavForMobile = ({ setOpen }) => {
   };
 
   return (
-    <nav className="absolute top-0 left-0 w-full sm:w-4/5 md:w-3/5 z-50">
-      <div className="bg-[#F5F5F7]">
+    <nav
+      className={`fixed top-0 left-0 w-full sm:w-4/5 md:w-3/5 z-50  h-screen bg-red-400 transform duration-500 ease-in-out transition-all ${
+        open ? "translate-x-0" : "-translate-x-full"
+      }`}
+    >
+      <div className="">
         <div className="w-full mx-auto relative ">
-          <div className="flex items-center justify-between py-5 px-4">
-            <span onClick={() => setOpen(false)}>
-              <FaTimes />
+          <div className="flex items-center justify-between py-7 px-4">
+            <span
+              className="text-3xl cursor-pointer"
+              onClick={() => setOpen(false)}
+            >
+              <IoCloseOutline />
             </span>
-            <span className=" text-right block">
+            <span className="text-right block">
               <Link href="#">Sign In</Link> or <Link href="#"> Register</Link>
             </span>
           </div>
