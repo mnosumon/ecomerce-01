@@ -1,8 +1,12 @@
+import CardForMobile from "../../utilities/CardForMobile";
 import React from "react";
-// import Product from "../product/Index";
 
 const Index = () => {
-  return <div>{/* <Product /> */}</div>;
+  return (
+    <div className="container mx-auto">
+      <CardForMobile />
+    </div>
+  );
 };
 
 export default Index;

@@ -32,7 +32,7 @@ export const products = [
     onlineAvilable: "Online Avilable",
     discount: "30%",
     bestSeller: "Best Seller",
-    image: "/image/energy-max.webp",
+    image: "/images/hello.avif",
     productType: "gummies",
     productIcon: <CgProductHunt />,
     doseType: "3-in-1 Blend",
